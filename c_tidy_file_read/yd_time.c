@@ -4,7 +4,11 @@
 
 /* Reference:  https://www.gnu.org/software/libc/manual/html_node/Time-Functions-Example.html */
 
-void yd_print_time(void) {
+// pass by reference added here. Size of time string set in the caller function //
+// buffer set in caller function                                                //
+// can maintain this as a void function                                         //
+
+void yd_print_time(unsigned long *size_of_time_buffer) {
     
     char buffer[SIZE];
     time_t rawtime; // epoch time
@@ -13,7 +17,10 @@ void yd_print_time(void) {
     time ( &rawtime );
     timeinfo = localtime ( &rawtime );
     
-    strftime (buffer, SIZE, "%A %H:%M:%S %p \n", timeinfo);
+    strftime (buffer, SIZE, "** %A %H:%M:%S %p ", timeinfo);
+   
+    *size_of_time_buffer = strlen(buffer);
+    
     fputs (buffer, stdout);
 
 }

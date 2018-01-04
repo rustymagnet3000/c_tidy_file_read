@@ -1,11 +1,13 @@
 //  Created by rustymagnet on 01/01/2018
 #include <stdio.h>
-#include "yd_time.h"
+#include "file_read.h"  /* orchestrates file reading */
+#include "console_io.h"
 
 int main(int argc, const char * argv[]) {
     
-    yd_print_time();
-    
+    console_header();
+    read_file_line_by_line();
+    console_footer();
     
     return 0;
 }
