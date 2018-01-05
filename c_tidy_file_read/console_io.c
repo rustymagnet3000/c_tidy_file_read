@@ -1,33 +1,32 @@
 #include "console_io.h"
-
 #define DELIMETER "|" /* TO SEPARATE PADDING */
+
 int BOUNDARY = 40;
 
-void console_header()
+static void yd_print_banners(size_t *start_char)
 {
-    unsigned long size_of_time_buffer = 0;
-    
-    yd_print_time(&size_of_time_buffer);
-
-    char c = '*'; // single quotes required, not double quotes
+    char c = '*'; // single quotes intentional
     
     do {
         putchar(c);
-        size_of_time_buffer++;
-    }while(size_of_time_buffer <= (BOUNDARY * 2) + sizeof(DELIMETER));
+        *start_char = *start_char + 1;
+    }while(*start_char <= (BOUNDARY * 2) + sizeof(DELIMETER));
     putchar('\n');
+}
+
+void console_header()
+{
+    size_t size_of_time_buffer = 0;
+    char *malloc_buffer = malloc( sizeof( char ) * BOUNDARY + 1);
+
+    yd_print_time(&size_of_time_buffer, malloc_buffer);
+    yd_print_banners(&size_of_time_buffer);
 }
 
 void console_footer()
 {
-    char c = '*'; // single quotes required, not double quotes
-    
-    int i = 0;
-    do {
-        putchar(c);
-        i++;
-    }while(i <= (BOUNDARY * 2) + sizeof(DELIMETER));
-    putchar('\n');
+    size_t start_char = 0;
+    yd_print_banners(&start_char);
 }
 
 void console_io(const char* label, const char* value)

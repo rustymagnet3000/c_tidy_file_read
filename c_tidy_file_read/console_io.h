@@ -2,6 +2,7 @@
 #define console_io_h
 
 #include <stdio.h>
+#include <stdlib.h>     /* abort(), malloc(), realloc(), free() */
 #include "yd_time.h"
 
 extern int BOUNDARY;

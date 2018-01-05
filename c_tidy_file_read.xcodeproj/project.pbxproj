@@ -74,10 +74,10 @@
 			children = (
 				D086087C1FFAEFC500504970 /* yd_time.h */,
 				D086087D1FFAEFC500504970 /* yd_time.c */,
-				D086087F1FFE983600504970 /* padded_label.c */,
-				D08608801FFE983600504970 /* padded_label.h */,
 				D08608821FFE984B00504970 /* console_io.c */,
 				D08608831FFE984B00504970 /* console_io.h */,
+				D086087F1FFE983600504970 /* padded_label.c */,
+				D08608801FFE983600504970 /* padded_label.h */,
 				D08608841FFE984B00504970 /* file_read.c */,
 				D08608851FFE984B00504970 /* file_read.h */,
 				3A0170451FFA89710071D862 /* main.c */,
