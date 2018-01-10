@@ -51,5 +51,3 @@ long yd_calculate_time_taken(time_t *end_time, time_t *start_time){
     
     return *end_time - *start_time;
 }
-
-
