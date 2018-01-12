@@ -8,12 +8,12 @@
 /* this is a large convenience initializor. You set the total seconds and then all other pieces are auto calculated */
 
 enum TIME_TAKEN{
-    SECONDS,
-    MINUTES,
+    WEEKS,
+    DAYS ,
     HOURS,
-    DAYS,
-    WEEKS
-};
+    MINUTES,
+    SECONDS
+} TIME_TAKEN;
 
 typedef struct YD_TIME_RESULT {
     char *primary_time_value;
@@ -111,22 +111,36 @@ char* yd_set_readable_string(YD_TIME_RESULT *time_result) {
 
 // logic is incorrect.  I need a recursive loop that generates an array of values to show.  Starts at weeks and iterates down through each value.  Instead of trying to convert all into minutes or hours.  It has to be and.
 
+#define SECOND 1
+#define MINUTE 60
+#define HOUR 3600
+#define DAYS 86400
+#define WEEKS 604800
+
 int main() {
     
     console_header();
-    YD_TIME time_start = yd_init_time();
-    YD_TIME time_end = yd_init_time();;
-    YD_TIME_RESULT time_result;
-
-    /* initialize time result */
-    time_result.total_seconds = yd_calculate_time_taken(&time_end.epoch_time, &time_start.epoch_time);
-
-    /* print result */
-    char *time_taken_lbl = yd_set_readable_string(&time_result);
-    console_io(time_taken_lbl, time_taken_lbl);
-
-//     read_file_line_by_line();
-    console_footer();
+    
+    int array[5] = { SECOND, MINUTE, HOUR, DAYS, WEEKS };
+ 
+        // robustness is defined as explicity sorting the array before access
+    for( int i = 4; i >= 0; i-- ) {
+        printf("%d\n",  array[i] );
+    }
+    
+    //    YD_TIME time_start = yd_init_time();
+//    YD_TIME time_end = yd_init_time();;
+//    YD_TIME_RESULT time_result;
+//
+//    /* initialize time result */
+//    time_result.total_seconds = yd_calculate_time_taken(&time_end.epoch_time, &time_start.epoch_time);
+//
+//    /* print result */
+//    char *time_taken_lbl = yd_set_readable_string(&time_result);
+//    console_io(time_taken_lbl, time_taken_lbl);
+//
+////     read_file_line_by_line();
+//    console_footer();
     
     return 0;
 }
