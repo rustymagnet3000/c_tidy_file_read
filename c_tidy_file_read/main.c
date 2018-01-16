@@ -9,6 +9,8 @@
 
 int main() {
     
+    /* next step: update to support file parsing    */
+    
     console_header();    
     YD_TIME time_start = yd_init_time();
     YD_TIME time_end = yd_init_time();;
