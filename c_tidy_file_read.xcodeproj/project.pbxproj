@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A0170461FFA89710071D862 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A0170451FFA89710071D862 /* main.c */; };
+		D078B2C5200E4C4800F26BE1 /* yd_calculate_time_taken.c in Sources */ = {isa = PBXBuildFile; fileRef = D078B2C4200E4C4800F26BE1 /* yd_calculate_time_taken.c */; };
 		D086087E1FFAEFC500504970 /* yd_time.c in Sources */ = {isa = PBXBuildFile; fileRef = D086087D1FFAEFC500504970 /* yd_time.c */; };
 		D08608811FFE983600504970 /* padded_label.c in Sources */ = {isa = PBXBuildFile; fileRef = D086087F1FFE983600504970 /* padded_label.c */; };
 		D08608861FFE984B00504970 /* console_io.c in Sources */ = {isa = PBXBuildFile; fileRef = D08608821FFE984B00504970 /* console_io.c */; };
@@ -29,6 +30,8 @@
 /* Begin PBXFileReference section */
 		3A0170421FFA89710071D862 /* c_tidy_file_read */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = c_tidy_file_read; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0170451FFA89710071D862 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		D078B2C3200E4C4800F26BE1 /* yd_calculate_time_taken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yd_calculate_time_taken.h; sourceTree = "<group>"; };
+		D078B2C4200E4C4800F26BE1 /* yd_calculate_time_taken.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = yd_calculate_time_taken.c; sourceTree = "<group>"; };
 		D086087B1FFAEBE200504970 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D086087C1FFAEFC500504970 /* yd_time.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yd_time.h; sourceTree = "<group>"; };
 		D086087D1FFAEFC500504970 /* yd_time.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = yd_time.c; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 				D08608841FFE984B00504970 /* file_read.c */,
 				D08608851FFE984B00504970 /* file_read.h */,
 				3A0170451FFA89710071D862 /* main.c */,
+				D078B2C3200E4C4800F26BE1 /* yd_calculate_time_taken.h */,
+				D078B2C4200E4C4800F26BE1 /* yd_calculate_time_taken.c */,
 				D086087B1FFAEBE200504970 /* README.md */,
 			);
 			path = c_tidy_file_read;
@@ -153,6 +158,7 @@
 			files = (
 				D08608871FFE984B00504970 /* file_read.c in Sources */,
 				D08608811FFE983600504970 /* padded_label.c in Sources */,
+				D078B2C5200E4C4800F26BE1 /* yd_calculate_time_taken.c in Sources */,
 				3A0170461FFA89710071D862 /* main.c in Sources */,
 				D086087E1FFAEFC500504970 /* yd_time.c in Sources */,
 				D08608861FFE984B00504970 /* console_io.c in Sources */,
