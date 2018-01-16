@@ -18,8 +18,8 @@ int main() {
 
     yd_print_time_taken(&total_seconds);
     
-    //     read_file_line_by_line();
-    // console_footer();
+    read_file_line_by_line();
+    console_footer();
     
     putchar('\n');
     return 0;
