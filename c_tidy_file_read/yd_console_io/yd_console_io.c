@@ -1,4 +1,4 @@
-#include "console_io.h"
+#include "yd_console_io.h"
 #define DELIMETER "|" /* TO SEPARATE PADDING */
 
 int BOUNDARY = 40;
@@ -14,7 +14,7 @@ static void yd_print_banners(size_t *start_char)
     putchar('\n');
 }
 
-void console_header()
+void yd_console_header()
 {
     size_t size_of_time_buffer = 0;
     char *malloc_buffer = malloc( sizeof( char ) * BOUNDARY + 1);
@@ -23,13 +23,13 @@ void console_header()
     yd_print_banners(&size_of_time_buffer);
 }
 
-void console_footer()
+void yd_console_footer()
 {
     size_t start_char = 0;
     yd_print_banners(&start_char);
 }
 
-void console_io(const char* label, const char* value)
+void yd_console_io(const char* label, const char* value)
 {
     printf("%s%s %s\n", label, DELIMETER, value);
 }

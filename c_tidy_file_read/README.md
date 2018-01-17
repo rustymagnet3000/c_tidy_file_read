@@ -1,13 +1,13 @@
 ## A tidy C file parser
 
 ### Code features
-•    C only
-•    Source controlled directly from xCode 9, on purpose
-•    Reads file A (the file to search)
-•    Reads file B (the strings to find)
-•    Print chars to stdout
-•    Padsthe read lines
-•    Times the operations
+    •    C only
+    •    Source controlled directly from xCode 9, on purpose
+    •    Reads file A (the file to search)
+    •    Reads file B (the strings to find)
+    •    Print chars to stdout
+    •    Padsthe read lines
+    •    Times the operations
 
 ### Interesting APIs, types and structs
     Time ->  time_t struct, strftime

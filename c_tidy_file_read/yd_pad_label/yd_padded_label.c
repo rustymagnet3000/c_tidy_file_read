@@ -1,4 +1,4 @@
-#include "padded_label.h"
+#include "yd_padded_label.h"
 
 enum LABEL_TYPE{
     NORMAL,
@@ -32,7 +32,7 @@ static char* setup_vanilla_line()
     return vanilla_line;
 }
 
-const char* padded_string(const char *raw_label_ptr)
+const char* yd_padded_string(const char *raw_label_ptr)
 {
     
     char* padded_label = setup_vanilla_line();

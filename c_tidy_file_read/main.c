@@ -1,27 +1,49 @@
 //  Created by rustymagnet on 01/01/2018
 #include <stdio.h>  // sprintf
 #include <unistd.h> // used for Sleep API
-#include "file_read.h"  /* orchestrates file reading */
-#include "console_io.h"
+#include "yd_file_read.h"  /* orchestrates file reading */
+#include "yd_console_io.h"
 #include "yd_time.h"
 #include "yd_calculate_time_taken.h"
+#include "search_file.h"
 
-
-int main() {
+void yd_handle_command_line_input(int *argc, const char * argv[]){
     
-    /* next step: update to support file parsing    */
+    if (*argc > 2) {
+        printf("Too many inputs\n\n");
+        goto error_flow;
+    }
     
-    console_header();    
-    YD_TIME time_start = yd_init_time();
-    YD_TIME time_end = yd_init_time();;
+    switch(*argc) {
+        case 1:
+            printf("No inputs supplied\n");
+            goto error_flow;
+        case 2:
+            printf("Argument supplied: %s\n", argv[1]);
+            break;
+        default :
+            printf("Unexpected failure\n\n");
+            goto error_flow;
 
-    /* initialize time result */
-    unsigned long total_seconds = yd_calculate_time_taken(&time_end.epoch_time, &time_start.epoch_time);
+        error_flow:
+            exit(99);
+    }
+}
 
-    yd_print_time_taken(&total_seconds);
+int main(int argc, const char * argv[]) {
+
+    /* next step: update to support file parsing                                    */
+    /* first step; need an argc and argv to capture the filename to read            */
+    /* then start to parse the file, on a background thread, while you load a menu  */
     
-    read_file_line_by_line();
-    console_footer();
+    yd_handle_command_line_input(&argc, argv);
+    yd_console_header();
+
+    FILE *fp;
+    fp = yd_return_file_ptr("labels.txt");
+
+    YD_SEARCH_RESULT *result;
+    result = yd_search_specifc_term(fp, "version");
     
     putchar('\n');
     return 0;
