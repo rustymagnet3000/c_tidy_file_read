@@ -6,12 +6,10 @@
 #include <strings.h>
 #include "yd_file_read.h" /* added for file helper struct */
 
-/* the following Time structure is a public structure callable from anywhere         */
-typedef struct YD_SEARCH_RESULT {
-    unsigned int count;
+struct YD_SEARCH_RESULT {
     unsigned int line_number;
     char * line_text;
-} YD_SEARCH_RESULT;
+};
 
-YD_SEARCH_RESULT* yd_search_specifc_term(YD_FILE_HELPER *file_helper, char *search_term);
+struct YD_SEARCH_RESULT* yd_search_specifc_term(struct YD_FILE *fh, char *search_term);
 #endif /* search_file_h */

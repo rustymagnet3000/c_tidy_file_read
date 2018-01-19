@@ -25,3 +25,6 @@
     Incrementing a pass by refence int value:  *start_char = *start_char + 1;
     
     Notable: whether use Pass By Reference and make the Padding function a Void (return nothing).  Pass By Reference offered a smaller amount of variables but ultimately
+    
+    Your choice of a static or dynamic Struct.  This can lead to difficult bugs to fix as you can get into heap or stack memory differences. I had code working perfectly when everything was in main.c. Take it out of main (and off the local stack) and it broke down.  But for struct I was declaring I did not really require Dynamic Memory Allocation as I knew I wanted 1 struct and I knew how long it would last.  https://www.cs.swarthmore.edu/~newhall/cs31/resources/C-structs_pointers.php
+    

@@ -1,54 +1,50 @@
 #include "search_file.h"
 
-YD_SEARCH_RESULT* yd_search_specifc_term(YD_FILE_HELPER *file_helper, char *search_term){
+/* requirement: a dynamic allocation of structs contain each instance a substring is found in a file     */
+// a pointer to a struct (will be used to store the base address of a dynamically allocated array of structs
+// (the array buckets are allocated in heap memory)
 
-    const static struct YD_SEARCH_RESULT init_result = {.count = 0 , .line_number = 0 , .line_text = "<not found>" };
-    struct YD_SEARCH_RESULT *search_array[file_helper->num_of_lines];
+//struct YD_SEARCH_RESULT {
+//    int line_number;
+//    char * line_text;
+//};
 
+struct YD_SEARCH_RESULT* yd_search_specifc_term(struct YD_FILE *fh, char *search_term){
+
+    struct YD_SEARCH_RESULT *search_array;
+    search_array = malloc(sizeof(struct YD_SEARCH_RESULT)*10);
+
+    size_t bufsize = 256;
+    char *buffer;
     int array_count = 0;
     int line_number = 0;
     char *ret;
-    
-    size_t bufsize = 256;
-    char *buffer;
+
     buffer = (char *)malloc(bufsize * sizeof(char));
     if( buffer == NULL)
         exit(79);
-
-    //    /* need to add new struct to array on each substring find */
-    //    /* this sets the line_text FROM the substring to end of line. Not beginning of line */
     
-    char * line = NULL;
+    char *line = NULL;
     size_t len = 0;
-    size_t read;
+    ssize_t read; // no. of chars in line
+    
+    while ((read = getline(&line, &len, fh->file_ptr)) != -1) {
+        printf("length %zu :%s\n", read, line);
 
-    printf("num of lines %d\n", file_helper->num_of_lines);
-    printf("file pointer %p\n", file_helper->file);
+        if ((ret = strstr(buffer, search_term)) != NULL){
 
+            search_array[array_count].line_number = line_number;
+            search_array[array_count].line_text = malloc(sizeof(char)*100);
+            strcpy(search_array[array_count].line_text, ret);
+            array_count++;
+        }
 
-    if( fgets (buffer, 60, file_helper->file)!=NULL )
-    {
-        /* writing content to stdout */
-        puts(buffer);
+        line_number++;
     }
     
-    //    while ((read = getline(&line, &len, file_helper->file)) != -1) {
-//
-//        putchar('X');
-//
-//        if ((ret = strstr(buffer, search_term)) != NULL){
-//            /* init pointer to struct and allocate size */
-//            search_array[array_count] = malloc(sizeof(struct YD_SEARCH_RESULT));
-//           // search_array[array_count] = init_result;
-//            search_array[array_count]->count = search_array[array_count]->count + 1;
-//            search_array[array_count]->line_number = line_number;
-//           // search_array[array_count]->line_text =
-//            array_count++;
-//        }
-//
-//        line_number++;
-//    }
-
+    free(line);
     
-    return NULL;
+    
+    return search_array;
 }
+
