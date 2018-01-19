@@ -33,68 +33,6 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    yd_console_header();
-//    yd_handle_command_line_input(&argc, argv);
-    
-    
-//    /* init struct and allocate size */
-//    struct YD_FILE_HELPER fh;
-//    fh = malloc(sizeof(struct YD_FILE_HELPER));
-//    if(fh == NULL) {
-//        printf("Bad malloc error\n");
-//        exit(1);
-//    }
-//    const struct YD_FILE_HELPER init_file_helper = {.file = NULL, .num_of_lines = 0};
-//    *fh = init_file_helper;
-//
-//    yd_return_file_ptr("labels.txt", fh);
-//
-
-//
-//
-//    while ((read = getline(&line, &len, &(fh->file))) != -1) {
-//        printf("Retrieved line of length %zu :\n", read);
-//        printf("%s", line);
-//    }
-//
-//    free(line);
-
-    
-
-
-
-
-
-
-
-
-//            if ((ret = strstr(buffer, search_term)) != NULL){
-//                /* init pointer to struct and allocate size */
-//                search_array[array_count] = malloc(sizeof(struct YD_SEARCH_RESULT));
-//               // search_array[array_count] = init_result;
-//                search_array[array_count]->count = search_array[array_count]->count + 1;
-//                search_array[array_count]->line_number = line_number;
-//               // search_array[array_count]->line_text =
-//                array_count++;
-//            }
-
-//  line_number++;
-
-
-
-//   free(result);
-
 /* free not actually freeing */
 
 
