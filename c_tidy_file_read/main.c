@@ -6,29 +6,8 @@
 #include "yd_time.h"
 #include "yd_calculate_time_taken.h"
 #include "search_file.h"
+#include "yd_handle_argv.h"
 
-void yd_handle_command_line_input(int *argc, const char * argv[]){
-    
-    if (*argc > 2) {
-        printf("Too many inputs\n\n");
-        goto error_flow;
-    }
-    
-    switch(*argc) {
-        case 1:
-            printf("No inputs supplied\n");
-            goto error_flow;
-        case 2:
-            printf("Argument supplied: %s\n", argv[1]);
-            break;
-        default :
-            printf("Unexpected failure\n\n");
-            goto error_flow;
-
-        error_flow:
-            exit(99);
-    }
-}
 
 int main(int argc, const char * argv[]) {
 
@@ -39,12 +18,42 @@ int main(int argc, const char * argv[]) {
     yd_handle_command_line_input(&argc, argv);
     yd_console_header();
 
-    FILE *fp;
-    fp = yd_return_file_ptr("labels.txt");
+    YD_FILE_HELPER *file_helper;
+    file_helper = yd_return_file_ptr("labels.txt");
 
     YD_SEARCH_RESULT *result;
-    result = yd_search_specifc_term(fp, "version");
+//    result = yd_search_specifc_term(file_helper, "label");
     
+    char * line = NULL;
+    size_t len = 0;
+    size_t read;
+    char *ret;
+    
+    printf("num of lines %d\n", file_helper->num_of_lines);
+    printf("file pointer %p\n", file_helper->file);
+    
+    
+        while ((read = getline(&line, &len, file_helper->file)) != -1) {
+    
+            putchar('X');
+    
+//            if ((ret = strstr(buffer, search_term)) != NULL){
+//                /* init pointer to struct and allocate size */
+//                search_array[array_count] = malloc(sizeof(struct YD_SEARCH_RESULT));
+//               // search_array[array_count] = init_result;
+//                search_array[array_count]->count = search_array[array_count]->count + 1;
+//                search_array[array_count]->line_number = line_number;
+//               // search_array[array_count]->line_text =
+//                array_count++;
+//            }
+    
+          //  line_number++;
+        }
+    
+    
+    free(result);
+    
+    /* free not actually freeing */
     putchar('\n');
     return 0;
 }
