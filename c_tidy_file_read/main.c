@@ -37,7 +37,7 @@ int main(int argc, const char * argv[]) {
     
     yd_console_header();
     char *padded_label;
-    char padded_label_int[12];
+    char padded_label_int[12]; //12 big enough for int inside a char array
     for(int i = 0; i < total_found; i++)
     {
         padded_label = yd_padded_string(result_array[i].line_text);
