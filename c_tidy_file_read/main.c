@@ -34,15 +34,21 @@ int main(int argc, const char * argv[]) {
 
     result_array = realloc(result_array, (total_found * sizeof(struct YD_SEARCH_RESULT)));
     
+    
+    yd_console_header();
+    char *padded_label;
+    char padded_label_int[12];
     for(int i = 0; i < total_found; i++)
     {
-        printf("WHOOP%p\tLine:%s\t%u\n", &result_array[i], result_array->line_text, result_array->line_number);
-   //     free(result_array->line_text);
+        padded_label = yd_padded_string(result_array[i].line_text);
+        sprintf(padded_label_int, "%d", result_array[i].line_number);
+        yd_console_io(padded_label, padded_label_int);
+        free(result_array[i].line_text);
     }
-    
+    yd_console_footer();
+    free(result_array);
     fclose(fh.file_ptr);
     putchar('\n');
     return 0;
 }
 
-/* free not actually freeing */

@@ -59,7 +59,7 @@ void yd_read_file_line_by_line(const char *filename)
     size_t len = 0;
     size_t read;
     while ((read = getline(&line, &len, fp)) != -1) {
-        const char* result = yd_padded_string(line);
+        char* result = yd_padded_string(line);
         yd_console_io(result, result);
         free((char*)result);
     }

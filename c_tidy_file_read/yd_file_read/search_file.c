@@ -3,6 +3,7 @@
 /* requirement: a dynamic allocation of structs contain each instance a substring is found in a file     */
 // a pointer to a struct (will be used to store the base address of a dynamically allocated array of structs
 // (the array buckets are allocated in heap memory)
+// strdup deals with all of the malloc; this still needs to freed. It also copies the \n"
 
 #define MAX_ARRAY_SIZE 10
 

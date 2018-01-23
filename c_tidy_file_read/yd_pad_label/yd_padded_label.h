@@ -6,6 +6,6 @@
 #include <string.h>     /* memcpy(), strlen() */
 #include "yd_console_io.h"
 
-const char* yd_padded_string(const char *raw_label_ptr);
+char* yd_padded_string(const char *raw_label_ptr);
 
 #endif /* padded_label_h */

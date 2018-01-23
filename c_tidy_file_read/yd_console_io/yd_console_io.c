@@ -29,7 +29,8 @@ void yd_console_footer()
     yd_print_banners(&start_char);
 }
 
-void yd_console_io(const char* label, const char* value)
+void yd_console_io(char* label, char* value)
 {
     printf("%s%s %s\n", label, DELIMETER, value);
 }
+
