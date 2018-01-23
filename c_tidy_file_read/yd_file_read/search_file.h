@@ -11,5 +11,5 @@ struct YD_SEARCH_RESULT {
     char * line_text;
 };
 
-struct YD_SEARCH_RESULT* yd_search_specifc_term(struct YD_FILE *fh, char *search_term);
+int yd_search_specifc_term(struct YD_SEARCH_RESULT *search_array, struct YD_FILE *fh, char *search_term);
 #endif /* search_file_h */
