@@ -14,6 +14,14 @@
 
 int main(int argc, const char * argv[]) {
 
+    yd_handle_command_line_input(&argc, argv);
+    
+    
+    exit(99);
+    
+    
+    
+    
     struct YD_FILE fh;
 
     fh.file_ptr = malloc(sizeof(FILE));

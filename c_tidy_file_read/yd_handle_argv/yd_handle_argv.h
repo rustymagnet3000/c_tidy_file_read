@@ -3,5 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "yd_menu.h"
+
 void yd_handle_command_line_input(int *argc, const char * argv[]);
 #endif /* yd_handle_argv_h */

@@ -6,11 +6,6 @@
 #include "yd_console_io.h"
 
 /* init struct pointer and allocate size */
-struct YD_FILE_HELPER {
-    FILE file;
-    unsigned int num_of_lines;
-};
-
 struct YD_FILE {
     FILE *file_ptr;
     int line_count;

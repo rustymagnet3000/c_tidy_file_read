@@ -20,6 +20,8 @@
     
     char *test = "hello" is a read-only value. Don't try and write to it. You can write to char *test, when it is not initialized.
 
+    /* A character 'c' has no \n character.  Any APIs that look for a \n won't work. char option[2] is the substitute   */
+
     Enums are 2nd class citizens in C. You are better off using a constant C array and define statements, as you can't sort or find the name of an enum at run-time (they are removed).
     
     Incrementing a pass by refence int value:  *start_char = *start_char + 1;

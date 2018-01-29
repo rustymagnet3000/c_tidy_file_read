@@ -13,6 +13,8 @@ void yd_handle_command_line_input(int *argc, const char * argv[]){
             goto error_flow;
         case 2:
             printf("Argument supplied: %s\n", argv[1]);
+            yd_menu();
+            yd_handle_user_input();
             break;
         default :
             printf("Unexpected failure\n\n");
