@@ -1,19 +1,10 @@
 #include "yd_handle_user_input.h"
 #define BUFFER 5
 
-void quit() /* write error message and quit */
-{
-    fprintf(stderr, "memory exhausted\n");
-    exit(1);
-}
-
-void yd_handle_user_input(void){
-    
-    char* name = (char*) malloc(BUFFER); /* allocate buffer */
-    if (name == 0) quit();
+/*  Handles whitespace, too long buffer and no entry of a character    */
+void yd_handle_user_input(char* name){
     
     printf("Please enter option: ");
-    
     while (1) { /* skip leading whitespace */
         int c = getchar();
         if (c == EOF) break;
@@ -39,7 +30,4 @@ void yd_handle_user_input(void){
         
         i++;
     }
-    
-    printf("Option selected:  %s\n", name);
-    free(name); /* release memory */
 }

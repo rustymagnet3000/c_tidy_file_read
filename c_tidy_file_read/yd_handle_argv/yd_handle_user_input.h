@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
-void yd_handle_user_input(void);
 
+void yd_handle_user_input(char* name);
 
 #endif /* yd_handle_user_input_h */
