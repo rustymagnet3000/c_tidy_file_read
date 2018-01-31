@@ -9,10 +9,12 @@ void quit() /* write error message and quit */
 
 void yd_regex_and_branch_option(char* menu_option){
     
-    /* change entry to uppercase to minimize switch statemet */
+    /* change entry to uppercase to minimize switch statemet; despite being able to handle in regex */
     if(!isupper(*menu_option)){
         *menu_option = toupper(*menu_option);
-        if(!yd_regex_validation(menu_option, "^[A-Z]"))
+        
+        const enum YD_REGEX_PATTERN pattern = MENU_OPTION;
+        if(!yd_regex_validation(menu_option, &pattern))
         {
             fprintf(stderr, "Unsupported menu option\n");
             exit(89);
@@ -22,6 +24,9 @@ void yd_regex_and_branch_option(char* menu_option){
     switch(*menu_option) {
         case 'A':
             printf("Summary of all\n");
+            break;
+        case 'C':
+            printf("Count keyword\n");
             break;
         case 'S':
             printf("Search first instance of keyword\n");
