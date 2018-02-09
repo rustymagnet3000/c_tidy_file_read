@@ -8,6 +8,7 @@
 
 enum YD_REGEX_PATTERN {
     FILENAME,
+    SEARCH_TERM,
     MENU_OPTION
 };
 

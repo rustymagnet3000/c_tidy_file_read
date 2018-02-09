@@ -6,9 +6,10 @@
     •    Reads file A (the file to search)
     •    Reads file B (the strings to find)
     •    Print chars to stdout
-    •    Padsthe read lines
+    •    Pads the read lines
     •    Times the operations
-
+    •    Regex of filename and menu-option
+    
 ### Interesting APIs, types and structs
     Time ->  time_t struct, strftime
     div_t   -> useful for a division (you get the quotient and remainder as int values)

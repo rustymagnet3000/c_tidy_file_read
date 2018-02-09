@@ -1,5 +1,8 @@
 #include "yd_handle_argv.h"
 #define BUFFER 5
+#define FILENAME_BUFFER 50
+
+char *filename_to_parse;
 
 void quit() /* write error message and quit */
 {
@@ -24,12 +27,57 @@ void yd_regex_and_branch_option(char* menu_option){
     switch(*menu_option) {
         case 'A':
             printf("Summary of all\n");
+            
+            
+            struct YD_FILE fh;
+            
+            fh.file_ptr = malloc(sizeof(FILE));
+            if (!fh.file_ptr) {
+                printf("Malloc issue\n");
+                exit(EXIT_FAILURE);
+            }
+            
+            yd_return_file_ptr(filename_to_parse, &fh);
+            
+            // start at max size of 10 for struct array                     //
+            // loop through file to a max of <10 found instances            //
+            // the ralloc on the array to bring it to proper size           //
+            
+            struct YD_SEARCH_RESULT *result_array = malloc(10 * sizeof(struct YD_SEARCH_RESULT));
+            int total_found = 0;
+            char* search_term = (char*) malloc(FILENAME_BUFFER); /* allocate buffer */
+            yd_handle_user_input(search_term, SEARCH_TERM);
+
+            yd_console_io("Search term:", search_term);
+            total_found = yd_search_specifc_term(result_array, &fh, search_term);
+            
+            result_array = realloc(result_array, (total_found * sizeof(struct YD_SEARCH_RESULT)));
+            
+            
+            yd_console_header();
+            char *padded_label;
+            char padded_label_int[12]; //12 big enough for int inside a char array
+            for(int i = 0; i < total_found; i++)
+            {
+                padded_label = yd_padded_string(result_array[i].line_text);
+                sprintf(padded_label_int, "%d", result_array[i].line_number);
+                yd_console_io(padded_label, padded_label_int);
+                free(result_array[i].line_text);
+            }
+            yd_console_footer();
+            free(result_array);
+            fclose(fh.file_ptr);
+            putchar('\n');
+            
             break;
         case 'C':
             printf("Count keyword\n");
             break;
         case 'S':
             printf("Search first instance of keyword\n");
+            break;
+        case 'N':
+            printf("Network requests option\n");
             break;
         case 'F':
             printf("Search ALL instance of keyword\n");
@@ -53,13 +101,13 @@ void yd_handle_command_line_input(int *argc, const char * argv[]){
             goto error_flow;
         
         case 2:
-            printf("Argument supplied: %s\n", argv[1]);
+            filename_to_parse = malloc( sizeof( char ) * FILENAME_BUFFER + 1);
+            strcpy(filename_to_parse, argv[1]);
             yd_menu();
             char* name = (char*) malloc(BUFFER); /* allocate buffer */
             if (name == 0)
                     quit();
-            yd_handle_user_input(name);
-                printf("Option selected:  %s\n", name);
+            yd_handle_user_input(name, MENU_OPTION);
             yd_regex_and_branch_option(name);
             free(name); /* release memory */
             

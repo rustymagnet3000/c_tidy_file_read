@@ -24,7 +24,7 @@ YD_TIME yd_init_time() {
     return time_helper;
 }
 
-void yd_print_time(unsigned long *size_of_time_buffer, char *buffer) {
+void yd_get_time(unsigned long *size_of_time_buffer, char *buffer) {
     
     time_t rawtime; // epoch time
     struct tm * timeinfo;
@@ -35,8 +35,6 @@ void yd_print_time(unsigned long *size_of_time_buffer, char *buffer) {
     strftime (buffer, BOUNDARY, "** %A %H:%M:%S %p ", timeinfo);
    
     *size_of_time_buffer = strlen(buffer);
-    
-    fputs (buffer, stdout);
 }
 
 long yd_calculate_time_taken(time_t *end_time, time_t *start_time){

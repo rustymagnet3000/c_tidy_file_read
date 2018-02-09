@@ -14,6 +14,8 @@ void yd_menu(void){
     const static struct YD_MENU_ITEMS menu_options[MAX_MENU_OPTIONS] =
             {{.menu_option = "a", .description = "all items"},
             {.menu_option = "c", .description = "count interesting items"},
+            {.menu_option = "f", .description = "all cert info"},
+            {.menu_option = "n", .description = "all api requests"},
             {.menu_option = "s", .description = "specific items"}};
 
     for (int i = 0; i < MAX_MENU_OPTIONS; i++ ){

@@ -2,12 +2,11 @@
 
 /* purposely put the regex patterns inside same function as regex to avoid regex strings being spread throughout the code */
 
-
 static char * regex_finder(const enum YD_REGEX_PATTERN *enum_ptr)
 {
     switch (*enum_ptr) {
         case MENU_OPTION:
-            return "^[ACFS]$";
+            return "^[ACFNS]$";
         case FILENAME:
             // fallthrough
         default:

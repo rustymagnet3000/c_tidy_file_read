@@ -12,7 +12,7 @@ typedef struct YD_TIME {
     char* readable_time;
 } YD_TIME;
 
-void yd_print_time(unsigned long *size_of_time_buffer, char *buffer);
+void yd_get_time(unsigned long *size_of_time_buffer, char *buffer);
 YD_TIME yd_init_time(void);
 char* yd_readable_time(time_t *rawtime);
 long yd_calculate_time_taken(time_t *end_time, time_t *start_time);

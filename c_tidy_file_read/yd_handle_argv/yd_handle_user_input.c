@@ -1,10 +1,24 @@
 #include "yd_handle_user_input.h"
-#define BUFFER 5
+#define BUFFER 30
 
 /*  Handles whitespace, too long buffer and no entry of a character    */
-void yd_handle_user_input(char* name){
+void yd_handle_user_input(char* name, enum YD_REGEX_PATTERN pattern){
     
-    printf("Please enter option: ");
+    char *padded_label;
+    
+    switch (MENU_OPTION) {
+        case FILENAME:
+            padded_label = yd_padded_string("Enter filename");
+            break;
+        case MENU_OPTION:
+            padded_label = yd_padded_string("Enter menu option");
+            break;
+        default:
+            padded_label = yd_padded_string("Enter search term");
+            break;
+    }
+    yd_console_io_lbl_and_pttrn(padded_label);
+    
     while (1) { /* skip leading whitespace */
         int c = getchar();
         if (c == EOF) break;
@@ -27,7 +41,6 @@ void yd_handle_user_input(char* name){
                 fprintf(stderr, "Input too long\n");
                 exit(69);
         }
-        
         i++;
     }
 }
