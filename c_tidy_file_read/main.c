@@ -14,10 +14,11 @@
 
 int main(int argc, const char * argv[]) {
 
-  //  yd_handle_command_line_input(&argc, argv);
-    yd_console_header();
-    yd_console_footer();
+    yd_handle_command_line_input(&argc, argv);
 
+   // yd_console_header();
+
+    
     return 0;
 }
 

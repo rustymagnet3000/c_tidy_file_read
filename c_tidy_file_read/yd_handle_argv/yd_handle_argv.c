@@ -24,13 +24,10 @@ void yd_regex_and_branch_option(char* menu_option){
         }
     }
     
+    struct YD_FILE fh;
     switch(*menu_option) {
+        
         case 'A':
-            printf("Summary of all\n");
-            
-            
-            struct YD_FILE fh;
-            
             fh.file_ptr = malloc(sizeof(FILE));
             if (!fh.file_ptr) {
                 printf("Malloc issue\n");
@@ -48,13 +45,13 @@ void yd_regex_and_branch_option(char* menu_option){
             char* search_term = (char*) malloc(FILENAME_BUFFER); /* allocate buffer */
             yd_handle_user_input(search_term, SEARCH_TERM);
 
-            yd_console_io("Search term:", search_term);
             total_found = yd_search_specifc_term(result_array, &fh, search_term);
             
             result_array = realloc(result_array, (total_found * sizeof(struct YD_SEARCH_RESULT)));
             
             
             yd_console_header();
+            
             char *padded_label;
             char padded_label_int[12]; //12 big enough for int inside a char array
             for(int i = 0; i < total_found; i++)

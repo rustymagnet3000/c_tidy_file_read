@@ -6,7 +6,7 @@ void yd_handle_user_input(char* name, enum YD_REGEX_PATTERN pattern){
     
     char *padded_label;
     
-    switch (MENU_OPTION) {
+    switch (pattern) {
         case FILENAME:
             padded_label = yd_padded_string("Enter filename");
             break;

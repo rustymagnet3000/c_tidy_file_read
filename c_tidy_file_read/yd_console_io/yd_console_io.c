@@ -2,7 +2,7 @@
 #define DELIMETER "|" /* TO SEPARATE PADDING */
 int BOUNDARY = 40;
 
-/* memset does not null terminate char arrays */
+/* memset does not add a null terminator so had to ensure I used Calloc instead of Malloc to zero-initialize strings */
 static void yd_vanilla_stars(size_t *number_of_chars, char *chars_to_pad)
 {
     memset(chars_to_pad,'*',*number_of_chars);
@@ -11,13 +11,13 @@ static void yd_vanilla_stars(size_t *number_of_chars, char *chars_to_pad)
 void yd_console_header()
 {
     size_t size_of_time_buffer = 0;
-    char *time_string_buffer = malloc( sizeof( char ) * BOUNDARY + 1);
+    char *time_string_buffer = malloc( sizeof( char ) * (BOUNDARY*2) + 1);
     if(time_string_buffer == NULL)
         exit(96);
     yd_get_time(&size_of_time_buffer, time_string_buffer);
     
-    size_t size_of_padding_buffer = BOUNDARY - size_of_time_buffer;
-    char *padding_buffer = (char*)malloc(size_of_padding_buffer + 1);
+    size_t size_of_padding_buffer = (BOUNDARY*2) - size_of_time_buffer;
+    char *padding_buffer  = (char *)calloc( size_of_padding_buffer + 1, sizeof( char ) );
     if(padding_buffer == NULL)
         exit(96);
     yd_vanilla_stars(&size_of_padding_buffer, padding_buffer);
@@ -31,10 +31,10 @@ void yd_console_header()
 
 void yd_console_footer()
 {
-    size_t size_of_buffer = BOUNDARY;
-    char *malloc_buffer = malloc( sizeof( char ) * BOUNDARY + 1);
-    yd_vanilla_stars(&size_of_buffer, malloc_buffer);
-    yd_console_io_lbl_and_pttrn(malloc_buffer);
+    size_t size_of_buffer = BOUNDARY*2;
+    char *footer_buffer = (char *)calloc( size_of_buffer + 1, sizeof( char ) );
+    yd_vanilla_stars(&size_of_buffer, footer_buffer);
+    yd_console_io_lbl_and_pttrn(footer_buffer);
 }
 
 void yd_console_io(char* label, char* value)
