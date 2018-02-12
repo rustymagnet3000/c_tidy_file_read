@@ -24,7 +24,7 @@ static char* setup_vanilla_line()
     char *vanilla_line = malloc( sizeof( char ) * BOUNDARY + 1);
     
     if(vanilla_line == NULL)
-        exit(99);
+        yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
     
     for(int i = 0; i <= BOUNDARY; i++)
         strcpy(&vanilla_line[i]," ");

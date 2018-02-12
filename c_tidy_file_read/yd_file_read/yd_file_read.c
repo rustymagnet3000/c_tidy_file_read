@@ -7,22 +7,17 @@ void yd_return_file_ptr(const char *filename, struct YD_FILE *file_helper)
     // ******************************************************************************************** //
 
     /* Ensure file exists or fail */
-    if((file_helper->file_ptr = fopen(filename, "r")) == NULL) {
-        printf("No such file\n");
-        exit(99);
-    }
+    if((file_helper->file_ptr = fopen(filename, "r")) == NULL)
+        yd_handle_error(INPUT_FILE_CANNOT_READ_OR_FIND);
 
     /* check for empty file & then rewind to start of file */
     fseek(file_helper->file_ptr, 0, SEEK_END);
 
     if((file_helper->bytes_in_files = ftell(file_helper->file_ptr)) == 0 ) // White-Space != empty
-    {
-        printf("Nothing in file\n");
-        exit(98);
-    }
+        yd_handle_error(INPUT_EMPTY_FILE);
 
     if(file_helper->bytes_in_files < 50)  // stop almost empty files
-        exit(97);
+        yd_handle_error(INPUT_EMPTY_FILE);
     
     rewind(file_helper->file_ptr);
     
@@ -38,10 +33,8 @@ void yd_read_file_line_by_line(const char *filename)
     FILE * fp;
 
     /* Ensure file exists or fail */
-    if((fp = fopen(filename, "r")) == NULL) {
-        printf("No such file\n");
-        exit(99);
-    }
+    if((fp = fopen(filename, "r")) == NULL)
+        yd_handle_error(INPUT_FILE_CANNOT_READ_OR_FIND);
 
     /* check for empty file & then rewind to start of file */
     fseek(fp, 0, SEEK_END);
@@ -50,10 +43,7 @@ void yd_read_file_line_by_line(const char *filename)
     rewind(fp);
 
     if(fileLength == 0 ) // White-Space != empty
-    {
-        printf("Nothing in file\n");
-        exit(98);
-    }
+        yd_handle_error(INPUT_EMPTY_FILE);
 
     char * line = NULL;
     size_t len = 0;

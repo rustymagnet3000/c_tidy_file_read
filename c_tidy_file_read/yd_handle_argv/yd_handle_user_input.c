@@ -38,8 +38,7 @@ void yd_handle_user_input(char* name, enum YD_REGEX_PATTERN pattern){
         name[i] = c;
 
         if (i == BUFFER - 1) { /* buffer full */
-                fprintf(stderr, "Input too long\n");
-                exit(69);
+                yd_handle_error(INPUT_TOO_LONG);
         }
         i++;
     }

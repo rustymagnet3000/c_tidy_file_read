@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "yd_padded_label.h"
 #include "yd_console_io.h"
+#include "yd_error_handler.h"
 
 /* init struct pointer and allocate size */
 struct YD_FILE {

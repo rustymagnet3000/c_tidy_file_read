@@ -5,6 +5,7 @@
 #include <time.h>
 #include <string.h>
 #include "yd_console_io.h" // required to access global variable
+#include "yd_error_handler.h"
 
 /* the following Time structure is a public structure callable from anywhere         */
 typedef struct YD_TIME {

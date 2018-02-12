@@ -13,13 +13,15 @@ void yd_console_header()
     size_t size_of_time_buffer = 0;
     char *time_string_buffer = malloc( sizeof( char ) * (BOUNDARY*2) + 1);
     if(time_string_buffer == NULL)
-        exit(96);
+        yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
+    
     yd_get_time(&size_of_time_buffer, time_string_buffer);
     
     size_t size_of_padding_buffer = (BOUNDARY*2) - size_of_time_buffer;
     char *padding_buffer  = (char *)calloc( size_of_padding_buffer + 1, sizeof( char ) );
     if(padding_buffer == NULL)
-        exit(96);
+        yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
+    
     yd_vanilla_stars(&size_of_padding_buffer, padding_buffer);
     
     strcat(time_string_buffer, padding_buffer);

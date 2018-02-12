@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include "yd_error_handler.h"
 #include "yd_regex_helper.h"
 #include "yd_console_io.h"
 #include "yd_padded_label.h"
