@@ -1,5 +1,6 @@
 #include "yd_file_read.h"
 
+
 void yd_return_file_ptr(const char *filename, struct YD_FILE *file_helper)
 {
     // ******************************************************************************************** //
@@ -23,7 +24,7 @@ void yd_return_file_ptr(const char *filename, struct YD_FILE *file_helper)
     
 }
 
-void yd_read_file_line_by_line(const char *filename)
+void yd_parse_file(const char *filename)
 {
     // ******************************************************************************************** //
     // Read in a file, line by line, into a malloc string, print and free                           //
@@ -50,7 +51,7 @@ void yd_read_file_line_by_line(const char *filename)
     size_t read;
     while ((read = getline(&line, &len, fp)) != -1) {
         char* result = yd_padded_string(line);
-        yd_console_io(result, result);
+//        yd_console_io(result, result);
         free((char*)result);
     }
     fclose(fp);

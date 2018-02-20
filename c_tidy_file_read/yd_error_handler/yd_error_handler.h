@@ -5,6 +5,8 @@
 #include <stdlib.h>  // required for Exit()
 
 enum YD_ERROR {
+    THREAD_CREATE_ERROR,
+    THREAD_JOIN_ERROR,
     FILENAME_NOT_RECOGNIZED,
     INPUT_TOO_LONG,
     INPUT_EMPTY_FILE,

@@ -13,7 +13,8 @@ struct YD_FILE {
     long bytes_in_files;
 };
 
-void yd_read_file_line_by_line(const char *filename);
+void *yd_read_file(void *data); // background thread file read
+void yd_parse_file(const char *filename);
 void yd_return_file_ptr(const char *filename, struct YD_FILE *file_helper);
 
 #endif /* file_read_h */

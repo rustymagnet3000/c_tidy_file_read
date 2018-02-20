@@ -4,6 +4,10 @@ void yd_handle_error(enum YD_ERROR reported_error) /* write error message and qu
 {
 
     switch (reported_error) {
+        case THREAD_CREATE_ERROR:
+            fprintf(stderr, "thread create error\n");
+        case THREAD_JOIN_ERROR:
+            fprintf(stderr, "thread join error\n");
         case INPUT_FILE_CANNOT_READ_OR_FIND:
             fprintf(stderr, "Cannot read / find file\n");
             break;
