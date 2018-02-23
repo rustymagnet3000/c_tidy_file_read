@@ -1,11 +1,27 @@
 #include "yd_console_io.h"
 #define DELIMETER "|" /* TO SEPARATE PADDING */
-int BOUNDARY = 40;
+const int BOUNDARY = 40;
 
 /* memset does not add a null terminator so had to ensure I used Calloc instead of Malloc to zero-initialize strings */
 static void yd_vanilla_stars(size_t *number_of_chars, char *chars_to_pad)
 {
     memset(chars_to_pad,'*',*number_of_chars);
+}
+
+
+void yd_console_header_with_custom_buffer(char *buffer, size_t *buffer_size)
+{
+    size_t size_of_padding_buffer = (BOUNDARY) - *buffer_size;
+    char *padding_buffer  = (char *)calloc( size_of_padding_buffer + 1, sizeof( char ) );
+    if(padding_buffer == NULL)
+        yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
+    
+    yd_vanilla_stars(&size_of_padding_buffer, padding_buffer);
+    
+    strcat(buffer, padding_buffer);
+    yd_console_io_lbl_and_pttrn(buffer);
+    
+    free(padding_buffer);
 }
 
 void yd_console_header()

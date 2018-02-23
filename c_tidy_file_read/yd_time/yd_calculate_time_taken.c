@@ -42,6 +42,11 @@ void yd_print_time_taken(unsigned long *total_secs){
         { "seconds", SECOND }
     };
     
+    if(*total_secs == 0){
+        printf("seconds ");
+        return;
+    }
+
     int n = sizeof(time_typee)/sizeof(time_typee[0]);
     
     //  qsort not a requirement, if array is hard-coded in correect order. Explicity sorting for robustness.  //  Sorting high to low

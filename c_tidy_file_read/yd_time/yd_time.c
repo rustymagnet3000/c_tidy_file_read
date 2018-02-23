@@ -1,26 +1,55 @@
 #include "yd_time.h"
+const int TIME_CHAR_BUFFER = 80;
 
-/* Reference:  https://www.gnu.org/software/libc/manual/html_node/Time-Functions-Example.html       */
-/* pass by reference added here. Size of buffer & strlen in the caller function                     */
-/* Added helper struct to keep code tidier and allow to group comparison of start & finish times    */
+/*** Aimed to have consistent functions.  Self-contained functions that use Pass By Reference   ***/
+/*** self-contained print function, so no way to miss free()                                    ***/
 
-char* yd_readable_time(time_t *rawtime) {
+void static yd_readable_date(char *buffer, time_t *rawtime) {
     
     struct tm * timeinfo;
     timeinfo = localtime ( rawtime );
-    char *malloc_buffer = malloc( sizeof( char ) * 50 + 1);
+    strftime (buffer, BOUNDARY, "%A %H:%M:%S %p ", timeinfo);
+}
 
-    strftime (malloc_buffer, BOUNDARY, "%A %H:%M:%S %p ", timeinfo);
-    return malloc_buffer;
+void static yd_precise_time(struct timeval *time_precise) {
+    
+    gettimeofday(time_precise, NULL);
+}
+
+void yd_print_precise_time_elapsed(struct timeval start, struct timeval end){
+    
+    struct timeval tval_result;
+    timersub(&end, &start, &tval_result);
+    char *malloc_buffer = malloc( sizeof( char ) * TIME_CHAR_BUFFER + 1);
+    if(malloc_buffer == NULL)
+        yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
+    
+    sprintf(malloc_buffer, "** file read in: %ld.%02ld seconds ", (long int)tval_result.tv_sec,(long int)tval_result.tv_usec);
+    size_t size_of_precise_time_buffer = strlen(malloc_buffer);
+    
+    yd_console_header_with_custom_buffer(malloc_buffer, &size_of_precise_time_buffer);
+    free(malloc_buffer);
 }
 
 YD_TIME yd_init_time() {
     
     time_t rawtime; // epoch time
     time ( &rawtime );
+    struct timeval time_precise; // precise time epoch + usecs
     
-    YD_TIME time_helper = { .epoch_time = rawtime, .readable_time = yd_readable_time(&rawtime)};
+    char *malloc_buffer = malloc( sizeof( char ) * TIME_CHAR_BUFFER + 1);
+    if(malloc_buffer == NULL)
+        yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
     
+    yd_readable_date(malloc_buffer, &rawtime);
+    yd_precise_time(&time_precise);
+    
+    YD_TIME time_helper;
+    time_helper.epoch_time = rawtime;
+    time_helper.precise_time = time_precise;
+    time_helper.readable_time = malloc_buffer;
+    
+    free(malloc_buffer);
     return time_helper;
 }
 
@@ -35,17 +64,4 @@ void yd_get_time(unsigned long *size_of_time_buffer, char *buffer) {
     strftime (buffer, BOUNDARY, "** %A %H:%M:%S %p ", timeinfo);
    
     *size_of_time_buffer = strlen(buffer);
-}
-
-long yd_calculate_time_taken(time_t *end_time, time_t *start_time){
-    
-    if (*end_time == 0 || *start_time == 0) {  /* handle uninitialized time structs */
-        return 88888;
-    }
-    
-    if (*end_time < *start_time) {  /* handle incorrect ordering of times */
-        return 99999;
-    }
-    
-    return *end_time - *start_time;
 }
