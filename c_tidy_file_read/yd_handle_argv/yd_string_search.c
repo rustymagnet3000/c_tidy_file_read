@@ -1,4 +1,5 @@
 #include "yd_string_search.h"
+#define MAX_ARRAY_SIZE 10000
 
 void yd_string_search() {
     
@@ -9,11 +10,11 @@ void yd_string_search() {
 
     yd_return_file_ptr(filename_to_parse, &fh);
 
-    // start at max size of 10 for struct array                     //
-    // loop through file to a max of <10 found instances            //
-    // the ralloc on the array to bring it to proper size           //
+    // start at max size of 10000 for struct array              //
+    // loop through file to a max of <10 found instances        //
+    // ralloc trim to proper size                               //
 
-    struct YD_SEARCH_RESULT *result_array = malloc(10 * sizeof(struct YD_SEARCH_RESULT));
+    struct YD_SEARCH_RESULT *result_array = malloc(MAX_ARRAY_SIZE * sizeof(struct YD_SEARCH_RESULT));
     if (result_array == NULL)
         yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
     

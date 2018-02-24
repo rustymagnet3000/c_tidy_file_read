@@ -52,6 +52,10 @@ void yd_handle_command_line_input(int *argc, const char * argv[]){
             filename_to_parse = (char *)calloc( FILENAME_BUFFER + 1, sizeof( char ) );
             strcpy(filename_to_parse, argv[1]);
             
+            /* read file on background thread */
+            yd_read_file_background_thread(filename_to_parse);
+            
+            /* display menu */
             yd_menu();
             char* name = (char*) malloc(BUFFER); /* allocate buffer */
             if (name == 0)

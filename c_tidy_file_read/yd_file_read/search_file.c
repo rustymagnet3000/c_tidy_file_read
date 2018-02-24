@@ -5,7 +5,6 @@
 // (the array buckets are allocated in heap memory)
 // strdup deals with all of the malloc; this still needs to freed. It also copies the \n"
 
-#define MAX_ARRAY_SIZE 10
 
 int yd_search_specifc_term(struct YD_SEARCH_RESULT *search_array, struct YD_FILE *fh, char *search_term){
 
@@ -31,4 +30,3 @@ int yd_search_specifc_term(struct YD_SEARCH_RESULT *search_array, struct YD_FILE
     
     return array_count;
 }
-

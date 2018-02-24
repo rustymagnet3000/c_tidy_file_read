@@ -8,6 +8,7 @@
 #include "yd_handle_user_input.h"
 #include "yd_regex_helper.h"
 #include "yd_string_search.h"
+#include "yd_thread_file_read.h"
 #include "yd_error_handler.h"
 #include "yd_file_read.h"
 

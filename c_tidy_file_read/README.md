@@ -8,14 +8,21 @@
     •    Print chars to stdout
     •    Pads the read lines
     •    Times the operations
+    •    Used pthreads during the file read operation
     •    Regex of filename and menu-option
+    
+### Bugs
+    •    When I set the boundary too long
+    •   I have a fixed size of possible structs at 10000
     
 ### Interesting APIs, types and structs
     Time ->  time_t struct, strftime
     div_t   -> useful for a division (you get the quotient and remainder as int values)
     Added qsort to sort a const array before use
     Calloc instead of Malloc
+    Realloc to trim down a dynamically generated number of Structs
     Memset for repeating characters
+    Function pointers in pthreads code
     
 ### Learnings
 
