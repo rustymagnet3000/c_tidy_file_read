@@ -7,6 +7,7 @@
 #include "yd_time.h"
 #include "yd_file_read.h"
 #include "yd_error_handler.h"
+#include "yd_file_parse_into_structs.h"
 
 void yd_read_file_background_thread(char *filename);
 

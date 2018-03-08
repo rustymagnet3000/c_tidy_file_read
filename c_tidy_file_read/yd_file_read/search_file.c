@@ -6,6 +6,8 @@
 // strdup deals with all of the malloc; this still needs to freed. It also copies the \n"
 
 
+/* NEED TO ADD CODE THAT INCREASES SIZE OF MALLOC ARRAY */
+
 int yd_search_specifc_term(struct YD_SEARCH_RESULT *search_array, struct YD_FILE *fh, char *search_term){
 
     int array_count = 0;

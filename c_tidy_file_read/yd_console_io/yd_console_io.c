@@ -62,5 +62,5 @@ void yd_console_io(char* label, char* value)
 
 void yd_console_io_lbl_and_pttrn(char* label)
 {
-    printf("%s\n", label);
+    printf("%s", label);
 }

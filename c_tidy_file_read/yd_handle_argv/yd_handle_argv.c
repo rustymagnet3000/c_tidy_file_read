@@ -27,7 +27,7 @@ void yd_regex_and_branch_option(char* menu_option){
             printf("Search first instance of keyword\n");
             break;
         case 'N':
-            printf("Network requests option\n");
+            yd_parse_file(filename_to_parse);
             break;
         case 'F':
             printf("Search ALL instance of keyword\n");

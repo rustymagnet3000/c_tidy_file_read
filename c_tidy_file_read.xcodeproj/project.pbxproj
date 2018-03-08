@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A0170461FFA89710071D862 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 3A0170451FFA89710071D862 /* main.c */; };
+		D042145320446F1000943752 /* yd_file_parse_into_structs.c in Sources */ = {isa = PBXBuildFile; fileRef = D042145220446F0F00943752 /* yd_file_parse_into_structs.c */; };
 		D05CBE6D200F669200850E31 /* search_file.c in Sources */ = {isa = PBXBuildFile; fileRef = D05CBE6C200F669200850E31 /* search_file.c */; };
 		D078B2C5200E4C4800F26BE1 /* yd_calculate_time_taken.c in Sources */ = {isa = PBXBuildFile; fileRef = D078B2C4200E4C4800F26BE1 /* yd_calculate_time_taken.c */; };
 		D086087E1FFAEFC500504970 /* yd_time.c in Sources */ = {isa = PBXBuildFile; fileRef = D086087D1FFAEFC500504970 /* yd_time.c */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		3A0170421FFA89710071D862 /* c_tidy_file_read */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = c_tidy_file_read; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0170451FFA89710071D862 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		D042145120446F0F00943752 /* yd_file_parse_into_structs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yd_file_parse_into_structs.h; sourceTree = "<group>"; };
+		D042145220446F0F00943752 /* yd_file_parse_into_structs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = yd_file_parse_into_structs.c; sourceTree = "<group>"; };
 		D05CBE52200E552300850E31 /* labels.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
 		D05CBE53200E55D700850E31 /* plaintext.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = plaintext.txt; sourceTree = "<group>"; };
 		D05CBE6B200F669200850E31 /* search_file.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = search_file.h; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 		D05CBE57200E5CA000850E31 /* yd_file_read */ = {
 			isa = PBXGroup;
 			children = (
+				D042145120446F0F00943752 /* yd_file_parse_into_structs.h */,
+				D042145220446F0F00943752 /* yd_file_parse_into_structs.c */,
 				D08608841FFE984B00504970 /* yd_file_read.c */,
 				D08608851FFE984B00504970 /* yd_file_read.h */,
 				D05CBE6C200F669200850E31 /* search_file.c */,
@@ -256,6 +261,7 @@
 			files = (
 				D0FBABA7201A5363009EA1D7 /* yd_menu.c in Sources */,
 				D09031F82011EB3500949315 /* yd_handle_argv.c in Sources */,
+				D042145320446F1000943752 /* yd_file_parse_into_structs.c in Sources */,
 				D08608871FFE984B00504970 /* yd_file_read.c in Sources */,
 				D05CBE6D200F669200850E31 /* search_file.c in Sources */,
 				D0AF6D102041A662001467B3 /* yd_thread_file_read.c in Sources */,
