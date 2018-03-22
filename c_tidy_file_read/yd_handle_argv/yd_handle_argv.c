@@ -4,6 +4,8 @@
 char *filename_to_parse;
 int FILENAME_BUFFER = 50;
 
+static void yd_print_menu_get_input(void);
+
 void yd_regex_and_branch_option(char* menu_option){
     
     /* change entry to uppercase to minimize switch statemet; despite being able to handle in regex */
@@ -15,8 +17,10 @@ void yd_regex_and_branch_option(char* menu_option){
             yd_handle_error(MENU_OPTION_NOT_RECOGNIZED);
     }
 
+    const char *bye_message;
     switch(*menu_option) {
         
+            
         case 'A':
             yd_string_search();
             break;
@@ -27,15 +31,24 @@ void yd_regex_and_branch_option(char* menu_option){
             printf("Search first instance of keyword\n");
             break;
         case 'N':
-            yd_parse_file(filename_to_parse);
+//            if(global_result_1.total_found > 0){
+//                yd_print_results(<#const int *total_found#>)
+//            }
+            yd_console_io_lbl_and_pttrn("Read global array");
             break;
         case 'F':
             printf("Search ALL instance of keyword\n");
             break;
+        case 'Q':
+            bye_message = yd_padded_string("🔥 Thanks for using Logparser 🔥");
+            yd_console_io_lbl_and_pttrn((char *)bye_message);
+            yd_console_line_break();
+            exit(99);
         default :
             printf("Unexpected character\n\n");
             break;
     }
+    yd_print_menu_get_input();
 }
 
 void yd_handle_command_line_input(int *argc, const char * argv[]){
@@ -52,18 +65,11 @@ void yd_handle_command_line_input(int *argc, const char * argv[]){
             filename_to_parse = (char *)calloc( FILENAME_BUFFER + 1, sizeof( char ) );
             strcpy(filename_to_parse, argv[1]);
             
-            /* read file on background thread */
+            /* read file & prepare global arrays on background thread */
             yd_read_file_background_thread(filename_to_parse);
             
-            /* display menu */
-            yd_menu();
-            char* name = (char*) malloc(BUFFER); /* allocate buffer */
-            if (name == 0)
-                yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
-            yd_handle_user_input(name, MENU_OPTION);
-            yd_regex_and_branch_option(name);
-            free(name); /* release memory */
-            
+            yd_print_menu_get_input();
+
             break;
             
         default :
@@ -71,3 +77,15 @@ void yd_handle_command_line_input(int *argc, const char * argv[]){
             
     }
 }
+
+static void yd_print_menu_get_input(){
+    /* display menu and capture user input */
+    yd_menu();
+    char* name = (char*) malloc(BUFFER); /* allocate buffer */
+    if (name == 0)
+        yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
+    yd_handle_user_input(name, MENU_OPTION);
+    yd_regex_and_branch_option(name);
+    free(name); /* release memory */
+}
+

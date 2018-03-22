@@ -1,6 +1,6 @@
 #include "yd_console_io.h"
 #define DELIMETER "|" /* TO SEPARATE PADDING */
-const int BOUNDARY = 70;
+const int BOUNDARY = 40;
 
 /* memset does not add a null terminator so had to ensure I used Calloc instead of Malloc to zero-initialize strings */
 static void yd_vanilla_stars(size_t *number_of_chars, char *chars_to_pad)
@@ -55,6 +55,11 @@ void yd_console_footer()
     yd_console_io_lbl_and_pttrn(footer_buffer);
 }
 
+void yd_console_line_break()
+{
+    putchar('\n');
+}
+
 void yd_console_io(char* label, char* value)
 {
     printf("%s%s %s\n", label, DELIMETER, value);
@@ -62,5 +67,5 @@ void yd_console_io(char* label, char* value)
 
 void yd_console_io_lbl_and_pttrn(char* label)
 {
-    printf("%s", label);
+    printf("\n%s", label);
 }

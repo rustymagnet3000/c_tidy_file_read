@@ -2,9 +2,19 @@
 #define MAX_ARRAY_SIZE 1000
 #define START_ARRAY_SIZE 10
 
-struct YD_SEARCH_RESULT *global_result_array;
+struct YD_RESULTS global_result_1;
 
-const int yd_setup_predefined_array(const char *filename, char *search_term)
+void yd_print_results(){
+    
+    int i = 0;
+    do {
+        yd_console_io_lbl_and_pttrn(global_result_1.result_array[i].line_text);
+        i++;
+    } while (i < global_result_1.total_found);
+}
+
+
+void yd_setup_predefined_array(const char *filename, char *search_term)
 {
     //0/    read file
     struct YD_FILE fh;
@@ -14,19 +24,16 @@ const int yd_setup_predefined_array(const char *filename, char *search_term)
     
     yd_return_file_ptr(filename, &fh);
 
-    global_result_array = malloc(START_ARRAY_SIZE * sizeof(struct YD_SEARCH_RESULT));
-    if (global_result_array == NULL)
+    global_result_1.result_array = malloc(START_ARRAY_SIZE * sizeof(struct YD_SEARCH_RESULT));
+    if (global_result_1.result_array == NULL)
         yd_handle_error(MALLOC_CALLOC_MEMORY_ASSIGNMENT);
 
-    int total_found = 0;
-
     //2/    search for hardcoded string patterns
-    total_found = yd_search_specifc_term(global_result_array, &fh, search_term);
+    global_result_1.total_found = yd_search_specifc_term(global_result_1.result_array, &fh, search_term);
 
     //3/    trim down struct
-    global_result_array = realloc(global_result_array, (total_found * sizeof(struct YD_SEARCH_RESULT)));
+    global_result_1.result_array = realloc(global_result_1.result_array, (global_result_1.total_found * sizeof(struct YD_SEARCH_RESULT)));
     
-    return total_found;
 }
 
 void yd_parse_file(const char *filename)

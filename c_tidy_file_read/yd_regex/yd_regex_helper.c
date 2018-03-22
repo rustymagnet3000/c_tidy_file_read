@@ -5,7 +5,7 @@ static char * regex_finder(const enum YD_REGEX_PATTERN *enum_ptr)
 {
     switch (*enum_ptr) {
         case MENU_OPTION:
-            return "^[ACFNS]$";
+            return "^[ACFNQS]$";
         case FILENAME:
             // fallthrough
         default:

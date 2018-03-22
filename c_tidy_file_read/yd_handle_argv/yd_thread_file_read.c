@@ -10,9 +10,9 @@ unsigned int usecs = 500000;
 static void *yd_search_file_ptr(void *data)
 {
     YD_TIME start_time = yd_init_time();
-    yd_parse_file((char*)data);
-    completed = 0;
-    
+        yd_parse_file((char*)data);
+        yd_setup_predefined_array("labels.txt", "A");
+        completed = 0;
     YD_TIME end_time = yd_init_time();
     yd_print_precise_time_elapsed(start_time.precise_time, end_time.precise_time);
     return NULL;

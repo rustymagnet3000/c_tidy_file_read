@@ -34,6 +34,7 @@ void yd_string_search() {
 
     if(total_found > 0){
         
+        yd_console_line_break();
         for(int i = 0; i < total_found; i++)
         {
             padded_label = yd_padded_string(result_array[i].line_text);
@@ -46,7 +47,6 @@ void yd_string_search() {
         yd_console_io_lbl_and_pttrn("No items founds with that search term");
     }
 
-    yd_console_footer();
     free(result_array);
     fclose(fh.file_ptr);
     putchar('\n');

@@ -8,6 +8,7 @@
 
 extern const int BOUNDARY;
 void yd_console_header(void);
+void yd_console_line_break(void);
 void yd_console_header_with_custom_buffer(char *buffer, size_t *buffer_size);
 void yd_console_io(char* label, char* value);
 void yd_console_footer(void);
