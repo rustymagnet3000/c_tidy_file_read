@@ -6,6 +6,31 @@ int FILENAME_BUFFER = 50;
 
 static void yd_print_menu_get_input(void);
 
+int yd_print_in_mem_results(struct YD_SEARCH_RESULT *result_array, int *total_found){
+
+        yd_console_header();
+    
+        char *padded_label;
+        char padded_label_int[12]; //12 big enough for int inside a char array
+    
+        if(total_found > 0){
+    
+            yd_console_line_break();
+            for(int i = 0; i < *total_found; i++)
+            {
+                padded_label = yd_padded_string(result_array[i].line_text);
+                sprintf(padded_label_int, "%d", result_array[i].line_number);
+                yd_console_io(padded_label, padded_label_int);
+                free(result_array[i].line_text);
+            }
+    
+        } else {
+            yd_console_io_lbl_and_pttrn("No items founds with that search term");
+        }
+    
+    return 0;
+}
+
 void yd_regex_and_branch_option(char* menu_option){
     
     /* change entry to uppercase to minimize switch statemet; despite being able to handle in regex */
@@ -18,11 +43,17 @@ void yd_regex_and_branch_option(char* menu_option){
     }
 
     const char *bye_message;
+    struct YD_SEARCH_RESULT *ptr_results;
+    int result = -1;
+    int strings_found = 0;
+    
     switch(*menu_option) {
-        
+    
             
         case 'A':
-            yd_string_search();
+            ptr_results = yd_string_search(&strings_found);
+            result = yd_print_in_mem_results(ptr_results, &strings_found);
+            free(ptr_results); // remove the dynamically generated struct arrays after printing, as a new search could be conducted
             break;
         case 'C':
             printf("Count keyword\n");

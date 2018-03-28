@@ -7,8 +7,10 @@
 int main(int argc, const char * argv[]) {
     
     yd_handle_command_line_input(&argc, argv);
-    
-    // globally prep'd array now done on background thread, after validating file and filename was ok //
-    
+
+    // TODO: check whether new print function works for Network or API requests         //
+    // In memory array of structs held in handle_argv.c                                 //
+    // Design goal: Separate presentation logic and model logic                         //
+    // Design goal: arrays now done on background thread                                //
 
 }
