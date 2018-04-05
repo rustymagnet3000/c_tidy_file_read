@@ -6,5 +6,5 @@
 #include "yd_handle_user_input.h"
 #include "yd_menu.h"
 
-struct YD_SEARCH_RESULT* yd_string_search(int *total_found);
+struct YD_RESULTS* yd_string_search();
 #endif /* yd_string_search_h */

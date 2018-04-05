@@ -2,33 +2,32 @@
 #define BUFFER 5
 
 char *filename_to_parse;
+struct YD_RESULTS *search_results, *api_results;
 int FILENAME_BUFFER = 50;
 
 static void yd_print_menu_get_input(void);
 
-int yd_print_in_mem_results(struct YD_SEARCH_RESULT *result_array, int *total_found){
+void yd_print_in_mem_results(struct YD_RESULTS *results){
 
         yd_console_header();
     
         char *padded_label;
         char padded_label_int[12]; //12 big enough for int inside a char array
     
-        if(total_found > 0){
+        if(results->total_found > 0){
     
             yd_console_line_break();
-            for(int i = 0; i < *total_found; i++)
+            for(int i = 0; i < results->total_found; i++)
             {
-                padded_label = yd_padded_string(result_array[i].line_text);
-                sprintf(padded_label_int, "%d", result_array[i].line_number);
+                padded_label = yd_padded_string(results->result_array[i].line_text);
+                sprintf(padded_label_int, "%d", results->result_array[i].line_number);
                 yd_console_io(padded_label, padded_label_int);
-                free(result_array[i].line_text);
             }
     
         } else {
             yd_console_io_lbl_and_pttrn("No items founds with that search term");
         }
-    
-    return 0;
+
 }
 
 void yd_regex_and_branch_option(char* menu_option){
@@ -43,17 +42,15 @@ void yd_regex_and_branch_option(char* menu_option){
     }
 
     const char *bye_message;
-    struct YD_SEARCH_RESULT *ptr_results;
-    int result = -1;
-    int strings_found = 0;
+    
     
     switch(*menu_option) {
     
             
         case 'A':
-            ptr_results = yd_string_search(&strings_found);
-            result = yd_print_in_mem_results(ptr_results, &strings_found);
-            free(ptr_results); // remove the dynamically generated struct arrays after printing, as a new search could be conducted
+            search_results = yd_string_search();
+            yd_print_in_mem_results(search_results);
+            free(search_results); // remove the dynamically generated struct arrays after printing, as a new search could be conducted
             break;
         case 'C':
             printf("Count keyword\n");
@@ -62,6 +59,7 @@ void yd_regex_and_branch_option(char* menu_option){
             printf("Search first instance of keyword\n");
             break;
         case 'N':
+            
 //            if(global_result_1.total_found > 0){
 //                yd_print_results(<#const int *total_found#>)
 //            }
