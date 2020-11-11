@@ -47,7 +47,6 @@
 		D05CBE6C200F669200850E31 /* search_file.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = search_file.c; sourceTree = "<group>"; };
 		D078B2C3200E4C4800F26BE1 /* yd_calculate_time_taken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yd_calculate_time_taken.h; sourceTree = "<group>"; };
 		D078B2C4200E4C4800F26BE1 /* yd_calculate_time_taken.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = yd_calculate_time_taken.c; sourceTree = "<group>"; };
-		D086087B1FFAEBE200504970 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D086087C1FFAEFC500504970 /* yd_time.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yd_time.h; sourceTree = "<group>"; };
 		D086087D1FFAEFC500504970 /* yd_time.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = yd_time.c; sourceTree = "<group>"; };
 		D086087F1FFE983600504970 /* yd_padded_label.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yd_padded_label.c; sourceTree = "<group>"; };
@@ -111,7 +110,6 @@
 				D05CBE54200E5C2A00850E31 /* yd_console_io */,
 				D05CBE56200E5C9000850E31 /* yd_pad_label */,
 				D05CBE57200E5CA000850E31 /* yd_file_read */,
-				D086087B1FFAEBE200504970 /* README.md */,
 			);
 			path = c_tidy_file_read;
 			sourceTree = "<group>";

@@ -1,5 +1,4 @@
 ## A tidy C file parser
-
 ### Code features
     •    C only
     •    Source controlled directly from xCode 9, on purpose

@@ -4,7 +4,7 @@ const int TIME_CHAR_BUFFER = 80;
 /*** Aimed to have consistent functions.  Self-contained functions that use Pass By Reference   ***/
 /*** self-contained print function, so no way to miss free()                                    ***/
 
-void static yd_readable_date(char *buffer, time_t *rawtime) {
+void static yd_readable_date (char *buffer, time_t *rawtime) {
     
     struct tm * timeinfo;
     timeinfo = localtime ( rawtime );
